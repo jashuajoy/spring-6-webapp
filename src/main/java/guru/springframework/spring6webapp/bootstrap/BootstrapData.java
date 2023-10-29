@@ -48,8 +48,10 @@ public class BootstrapData implements CommandLineRunner {
         Publisher pSaved = publisherRepository.save(p);
 
         ericSaved.getBooks().add(dddSaved);
+        dddSaved.setPublisher(pSaved);
 
         authorRepository.save(ericSaved); // this line persists the association into hibernate
+        bookRepository.save(dddSaved);
 
         System.out.println("In Bootstrap");
         System.out.println("Author count: " + authorRepository.count());
